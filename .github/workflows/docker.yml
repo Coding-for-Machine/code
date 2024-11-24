@@ -1,4 +1,4 @@
-name:  Docker Images
+name: Docker Images
 
 on:
   push:
@@ -24,40 +24,28 @@ jobs:
       # Python konteynerini yaratish va push qilish
       - name: Build and Push Python Image
         run: |
-          cd server
-          cd python
+          cd server/python
           docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/python-app:latest
 
       # Node.js konteynerini yaratish va push qilish
       - name: Build and Push Node.js Image
         run: |
-          cd server
-          cd javascripts
+          cd server/javascripts
           docker build -t ${{ secrets.DOCKER_USERNAME }}/node-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/node-app:latest
 
       # C++ konteynerini yaratish va push qilish
       - name: Build and Push C++ Image
         run: |
-          cd server
-          cd cpp
+          cd server/cpp
           docker build -t ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest
-
-      # C# konteynerini yaratish va push qilish
-      # - name: Build and Push C# Image
-      #   run: |
-      #     cd server
-      #     cd csharp
-      #     docker build -t ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest .
-      #     docker push ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest
 
       # Java konteynerini yaratish va push qilish
       - name: Build and Push Java Image
         run: |
-          cd server
-          cd java
+          cd server/java
           docker build -t ${{ secrets.DOCKER_USERNAME }}/java-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/java-app:latest
 
@@ -75,8 +63,8 @@ jobs:
         with:
           go-version: '1.18'
 
-      - name: Build and Push Docker Image
+      - name: Build and Push Go Image
         run: |
-          docker build -t yourdockerhubusername/go-app:latest .
-          docker push yourdockerhubusername/go-app:latest
-
+          cd server/go
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/go-app:latest -f Dockerfile .
+          docker push ${{ secrets.DOCKER_USERNAME }}/go-app:latest

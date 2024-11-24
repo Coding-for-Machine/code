@@ -1,14 +1,5 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework> <!-- Yoki net7.0 yoki net5.0 versiyasini qo'llash mumkin -->
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="6.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
-  </ItemGroup>
-
-</Project>
+<ItemGroup>
+  <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="6.0.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
+</ItemGroup>

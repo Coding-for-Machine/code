@@ -1,17 +1,23 @@
-# Node.js imajidan foydalanamiz
+# Node.js rasmidan foydalanish
 FROM node:16
 
-# Ishlash papkasini yaratish
+# Ishlash uchun direktoriyani o'rnatish
 WORKDIR /app
 
-# package.json va package-lock.json fayllarini konteynerga nusxalash
-COPY package*.json /app/
+# NPM cache'ni tozalash
+RUN npm cache clean --force
 
-# Kutubxonalarni o‘rnatish
+# package.json va package-lock.json fayllarini nusxalash
+COPY package*.json ./
+
+# Npm kutubxonalarini o'rnatish
 RUN npm install
 
 # Barcha kodni konteynerga nusxalash
-COPY . /app
+COPY . .
 
-# Dastur boshlanishi
-CMD ["node", "index.js"]
+# Konteynerda ishga tushiradigan portni ko'rsatish
+EXPOSE 3000
+
+# Dastur ishga tushishi
+CMD ["npm", "start"]

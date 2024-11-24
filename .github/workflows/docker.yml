@@ -46,12 +46,12 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest
 
       # C# konteynerini yaratish va push qilish
-      - name: Build and Push C# Image
-        run: |
-          cd server
-          cd csharp
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest
+      # - name: Build and Push C# Image
+      #   run: |
+      #     cd server
+      #     cd csharp
+      #     docker build -t ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest .
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest
 
       # Java konteynerini yaratish va push qilish
       - name: Build and Push Java Image

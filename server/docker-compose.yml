@@ -23,13 +23,13 @@ services:
     container_name: cpp-app
     restart: always  # Yana bir bor ishga tushishi uchun
 
-  csharp-app:
-    build:
-      context: ./csharp
-    ports:
-      - "5001:5001"
-    container_name: csharp-app
-    restart: always  # Yana bir bor ishga tushishi uchun
+  # csharp-app:
+  #   build:
+  #     context: ./csharp
+  #   ports:
+  #     - "5001:5001"
+  #   container_name: csharp-app
+  #   restart: always  # Yana bir bor ishga tushishi uchun
 
   java-app:
     build: 

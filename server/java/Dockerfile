@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Dastur qurilishi
-RUN javac HelloWorld.java
+RUN javac app.java
 
 # Dastur boshlanishi
-CMD ["java", "HelloWorld"]
+CMD ["java", "app"]

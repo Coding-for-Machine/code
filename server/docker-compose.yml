@@ -3,14 +3,14 @@ version: '3.8'
 services:
   python-app:
     build: 
-      context: ./docker/python
+      context: ./python
     ports:
       - "5000:5000"
     container_name: python-app
   
   node-app:
     build: 
-      context: ./docker/javascripts
+      context: ./javascripts
     ports:
       - "3000:3000"
     container_name: node-app
@@ -25,7 +25,7 @@ services:
 
   csharp-app:
     build:
-      context: ./docker/csharp
+      context: ./csharp
     ports:
       - "5001:5001"
     container_name: csharp-app
@@ -33,7 +33,7 @@ services:
 
   java-app:
     build: 
-      context: ./docker/java
+      context: ./java
     ports:
       - "8081:8081"
     container_name: java-app
@@ -41,8 +41,8 @@ services:
 
   go-app:
     build:
-      context: ./docker/go
+      context: ./go
     ports:
       - "8081:8081"
     container_name: go-app
-    restart: always  # Yana bir bor ishga tushishi uchun
+    

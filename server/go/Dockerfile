@@ -1,20 +1,20 @@
-# Go imajidan foydalanamiz
+# Go rasmidan foydalanish
 FROM golang:1.18-alpine
 
-# Ishlash papkasini yaratamiz
+# Ishlash uchun katalogni o‘rnatish
 WORKDIR /app
 
-# Go mod va sum fayllarini konteynerga nusxalaymiz
+# Go mod va sum fayllarini konteynerga nusxalash
 COPY go.mod go.sum ./
 
 # Kerakli kutubxonalarni o‘rnatamiz
 RUN go mod tidy
 
-# Kodni konteynerga nusxalaymiz
-COPY . /app
+# Barcha kodni konteynerga nusxalash
+COPY . .
 
-# Go dasturini kompilyatsiya qilamiz
+# Go dasturini kompilyatsiya qilish
 RUN go build -o main .
 
-# Dastur ishga tushuriladi
+# Dasturini ishga tushirish
 CMD ["./main"]

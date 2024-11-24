@@ -1,5 +1,5 @@
 # Go imajidan foydalanamiz
-FROM golang:1.21-alpine
+FROM golang:1.18-alpine
 
 # Ishlash papkasini yaratamiz
 WORKDIR /app

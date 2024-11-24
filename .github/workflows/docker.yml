@@ -24,6 +24,7 @@ jobs:
       # Python konteynerini yaratish va push qilish
       - name: Build and Push Python Image
         run: |
+          cd server
           cd python
           docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/python-app:latest
@@ -31,6 +32,7 @@ jobs:
       # Node.js konteynerini yaratish va push qilish
       - name: Build and Push Node.js Image
         run: |
+          cd server
           cd node
           docker build -t ${{ secrets.DOCKER_USERNAME }}/node-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/node-app:latest
@@ -38,6 +40,7 @@ jobs:
       # C++ konteynerini yaratish va push qilish
       - name: Build and Push C++ Image
         run: |
+          cd server
           cd cpp
           docker build -t ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest
@@ -45,6 +48,7 @@ jobs:
       # C# konteynerini yaratish va push qilish
       - name: Build and Push C# Image
         run: |
+          cd server
           cd csharp
           docker build -t ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest
@@ -52,6 +56,7 @@ jobs:
       # Java konteynerini yaratish va push qilish
       - name: Build and Push Java Image
         run: |
+          cd server
           cd java
           docker build -t ${{ secrets.DOCKER_USERNAME }}/java-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/java-app:latest
@@ -59,6 +64,7 @@ jobs:
       # Go konteynerini yaratish va push qilish
       - name: Build and Push Go Image
         run: |
+          cd server
           cd go
           docker build -t ${{ secrets.DOCKER_USERNAME }}/go-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/go-app:latest

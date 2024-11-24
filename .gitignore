@@ -3,6 +3,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Docker konteynerlari va imajlari uchun
+*.log
+*.pid
+*.sqlite3
+*.pyc
+*.pyo
+docker-compose.override.yml
+
+# Docker build va konteyner fayllari
+.docker/
+.dockerignore
+
 # C extensions
 *.so
 

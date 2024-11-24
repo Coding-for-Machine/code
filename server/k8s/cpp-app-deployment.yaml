@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpp-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cpp-app
+  template:
+    metadata:
+      labels:
+        app: cpp-app
+    spec:
+      containers:
+        - name: cpp-app
+          image: my-docker-image:latest
+          ports:
+            - containerPort: 4000

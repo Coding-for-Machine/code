@@ -1,0 +1,108 @@
+# name: Build and Push Docker Images
+
+# on:
+#   push:
+#     branches:
+#       - main  # main branchga push qilganda workflow ishga tushadi
+
+# jobs:
+#   build_and_push:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # Repository'dan kodni olish
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+
+#       # Docker Hub'ga kirish
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME }}  # GitHub Secrets dan Docker username
+#           password: ${{ secrets.DOCKER_PASSWORD }}  # GitHub Secrets dan Docker password
+
+#       # Python konteynerini yaratish va push qilish
+#       - name: Build and Push Python Image
+#         run: |
+#           cd python
+#           docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app:latest .
+#           docker push ${{ secrets.DOCKER_USERNAME }}/python-app:latest
+
+#       # Node.js konteynerini yaratish va push qilish
+#       - name: Build and Push Node.js Image
+#         run: |
+#           cd node
+#           docker build -t ${{ secrets.DOCKER_USERNAME }}/node-app:latest .
+#           docker push ${{ secrets.DOCKER_USERNAME }}/node-app:latest
+
+#       # C++ konteynerini yaratish va push qilish
+#       - name: Build and Push C++ Image
+#         run: |
+#           cd cpp
+#           docker build -t ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest .
+#           docker push ${{ secrets.DOCKER_USERNAME }}/cpp-app:latest
+
+#       # C# konteynerini yaratish va push qilish
+#       - name: Build and Push C# Image
+#         run: |
+#           cd csharp
+#           docker build -t ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest .
+#           docker push ${{ secrets.DOCKER_USERNAME }}/csharp-app:latest
+
+#       # Java konteynerini yaratish va push qilish
+#       - name: Build and Push Java Image
+#         run: |
+#           cd java
+#           docker build -t ${{ secrets.DOCKER_USERNAME }}/java-app:latest .
+#           docker push ${{ secrets.DOCKER_USERNAME }}/java-app:latest
+
+#       # Go konteynerini yaratish va push qilish
+#       - name: Build and Push Go Image
+#         run: |
+#           cd go
+#           docker build -t ${{ secrets.DOCKER_USERNAME }}/go-app:latest .
+#           docker push ${{ secrets.DOCKER_USERNAME }}/go-app:latest
+name: Build and Deploy to Kubernetes
+
+on:
+  push:
+    branches:
+      - main  # Main branchga push bo'lganda ishga tushadi
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Ubuntu tizimida ishga tushadi
+
+    steps:
+      # Repositorydan kodni olish
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Docker Hub'ga login qilish
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  # GitHub secrets orqali username
+          password: ${{ secrets.DOCKER_PASSWORD }}  # GitHub secrets orqali password
+
+      # Docker imajini yaratish
+      - name: Build Docker image
+        run: docker build -t my-docker-image:latest .
+
+      # Docker imajini Docker Hub'ga push qilish
+      - name: Push Docker image to Docker Hub
+        run: docker push my-docker-image:latest
+
+      # Kubernetes klasteriga kubectl yordamida ulanish
+      - name: Set up Kubernetes configuration
+        uses: azure/setup-kubectl@v2
+        with:
+          kubeconfig: ${{ secrets.KUBECONFIG }}  # Kubernetes konfiguratsiyasini GitHub secrets orqali o'rnatish
+
+      # Kubernetesda imajni deploy qilish
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/python-app-deployment.yaml
+          kubectl apply -f k8s/python-app-service.yaml
+          kubectl apply -f k8s/node-app-deployment.yaml
+          kubectl apply -f k8s/node-app-service.yaml

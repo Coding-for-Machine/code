@@ -3,14 +3,14 @@ version: '3.8'
 services:
   python-app:
     build: 
-      context: ./python
+      context: ./docker/python
     ports:
       - "5000:5000"
     container_name: python-app
   
   node-app:
     build: 
-      context: ./javascripts
+      context: ./docker/javascripts
     ports:
       - "3000:3000"
     container_name: node-app
@@ -25,7 +25,7 @@ services:
 
   csharp-app:
     build:
-      context: ./csharp
+      context: ./docker/csharp
     ports:
       - "5001:5001"
     container_name: csharp-app
@@ -33,7 +33,7 @@ services:
 
   java-app:
     build: 
-      context: ./java
+      context: ./docker/java
     ports:
       - "8081:8081"
     container_name: java-app
@@ -41,7 +41,7 @@ services:
 
   go-app:
     build:
-      context: ./go
+      context: ./docker/go
     ports:
       - "8081:8081"
     container_name: go-app

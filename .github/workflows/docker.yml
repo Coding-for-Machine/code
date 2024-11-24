@@ -62,10 +62,21 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/java-app:latest
 
       # Go konteynerini yaratish va push qilish
-      - name: Build and Push Go Image
+      - name: Cache Go modules
+        uses: actions/cache@v2
+        with:
+          path: /tmp/go-cache
+          key: ${{ runner.os }}-go-mod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-mod-
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.18'
+
+      - name: Build and Push Docker Image
         run: |
-          cd server
-          cd go
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/go-app:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/go-app:latest
+          docker build -t yourdockerhubusername/go-app:latest .
+          docker push yourdockerhubusername/go-app:latest
 

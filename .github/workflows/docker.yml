@@ -1,4 +1,4 @@
-name: Build and Push Docker Images
+name:  Docker Images
 
 on:
   push:
@@ -62,6 +62,7 @@ jobs:
           cd go
           docker build -t ${{ secrets.DOCKER_USERNAME }}/go-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/go-app:latest
+
 # name: Build and Deploy to Kubernetes
 
 # on:

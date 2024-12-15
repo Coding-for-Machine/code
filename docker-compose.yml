@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web-api-testcase:
+    image: .
+    container_name: api-testcase
+    volumes:
+      - ./app /app
+    ports:
+      - '8088/8088'

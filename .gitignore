@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+./myserverenv
+/myserverenv
+
+myserverenv
 
 # Docker konteynerlari va imajlari uchun
 *.log

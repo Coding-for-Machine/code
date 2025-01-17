@@ -1,5 +1,5 @@
 # Python 3.9 asosidagi imajni ishlatamiz
-FROM python:3.9-slim
+FROM python:3.14.0a1-slim
 
 # Ishlash papkasini yaratamiz
 WORKDIR /app

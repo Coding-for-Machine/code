@@ -1,5 +1,5 @@
 # Go rasmidan foydalanish
-FROM golang:1.18-alpine
+FROM golang:1.24.3-alpine
 
 # Ishlash uchun katalogni o‘rnatish
 WORKDIR /app
